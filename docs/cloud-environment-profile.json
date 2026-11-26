@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "status": "PREPARED_NOT_APPLIED",
+  "name": "ANIMA-CLOUDDEV-D0",
+  "host": "Anthropic-hosted",
+  "data_class": "D0",
+  "repository": "aldo80st/anima-clouddev-lab",
+  "repository_scope": "single repository; no Project threads",
+  "network": {
+    "access": "Limited",
+    "allow_package_managers": false,
+    "allowed_domains": [
+      "github.com",
+      "release-assets.githubusercontent.com"
+    ],
+    "notes": "GitHub and Anthropic-managed paths are separate; validate actual release redirect and scope; no wildcard."
+  },
+  "environment_variables": {},
+  "network_secrets": [],
+  "connectors": [],
+  "setup_script": "",
+  "cost": {
+    "incremental_mxn": 0,
+    "extra_usage": "OFF_REQUIRED",
+    "auto_reload": "OFF_REQUIRED"
+  },
+  "scheduled_task": {
+    "name": "CLOUDDEV-01",
+    "trigger": {
+      "event": "pull_request.opened",
+      "title_exact": "CLOUDDEV-01 / attempt-01",
+      "draft": true,
+      "base": "main",
+      "head": "clouddev/request-01",
+      "actor": "VERIFY_BEFORE_ARMING"
+    },
+    "schedule": null,
+    "api_trigger": false,
+    "auto_fix": false,
+    "instructions_file": "work-orders/CLOUDDEV-01.md",
+    "status": "NOT_CREATED"
+  },
+  "activation_gates": [
+    "account quota and additional usage OFF",
+    "GitHub App restricted to laboratory; session attaches only lab",
+    "effective environment readback and connector list empty",
+    "branch protection or documented enforceable equivalent",
+    "global capacity and ownership",
+    "explicit pilot dispatch authorization"
+  ],
+  "notes": "This file is an operator manifest, not an Anthropic API schema or applied cloud configuration. No trigger or session created."
+}

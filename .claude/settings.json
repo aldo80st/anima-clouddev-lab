@@ -1,0 +1,11 @@
+{
+  "disableClaudeAiConnectors": true,
+  "isolatePeerMachines": true,
+  "permissions": {
+    "blockReadsOutsideWorkingDirectories": true,
+    "blockWritesOutsideWorkingDirectories": true
+  },
+  "attribution": {
+    "sessionUrl": true
+  }
+}
