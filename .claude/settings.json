@@ -3,7 +3,15 @@
   "isolatePeerMachines": true,
   "permissions": {
     "blockReadsOutsideWorkingDirectories": true,
-    "blockWritesOutsideWorkingDirectories": true
+    "blockWritesOutsideWorkingDirectories": true,
+    "allow": [
+      "mcp__claude-code-remote__get_environment"
+    ],
+    "deny": [
+      "SearchPlugins",
+      "SuggestPluginInstall"
+    ],
+    "disableBypassPermissionsMode": "disable"
   },
   "attribution": {
     "sessionUrl": true
