@@ -1,0 +1,73 @@
+{
+  "order": "CLOUDDEV-01",
+  "attempt": "attempt-03",
+  "status": "PASS_PENDING_INDEPENDENT_REVIEW",
+  "acceptance": "NOT_DECLARED",
+  "session": {
+    "id": "session_01ASSR3nd3GRgaxWqUnRMvCX",
+    "url": "https://claude.ai/code/session_01ASSR3nd3GRgaxWqUnRMvCX",
+    "environment_kind": "anthropic_cloud",
+    "environment_name": "ANIMA-CLOUDDEV-D0",
+    "claude_code_remote": "true"
+  },
+  "repository": "aldo80st/anima-clouddev-lab",
+  "base_sha": "4911dc7626adc604e7956d24bcfe6236b6f81722",
+  "result_branch": "clouddev/result-03",
+  "utc": {
+    "preflight": "2026-11-27T00:48:25Z",
+    "download": "2026-11-27T00:49:01Z",
+    "eval_end": "2026-11-27T00:50:34Z"
+  },
+  "platform": {"uname_sm": "Linux x86_64", "cpus": 4, "mem_total": "15Gi", "disk_root_avail": "61G"},
+  "network": {
+    "type": "limited",
+    "allowed_hosts": ["github.com", "release-assets.githubusercontent.com"],
+    "allow_package_managers": false,
+    "allow_mcp_servers": true,
+    "network_secrets": 0,
+    "env_vars_configured": 0,
+    "setup_script": false
+  },
+  "egress_negatives": [
+    {"test": "curl https://example.com", "http": "000", "curl_exit": 56, "expected": "blocked", "result": "PASS"},
+    {"test": "curl https://api.github.com/repos/octocat/Hello-World", "http": "403", "expected": "denied", "result": "PASS"},
+    {"test": "gh api repos/octocat/Hello-World", "exit": 1, "expected": "denied", "result": "PASS"},
+    {"test": "gh api repos/aldo80st/anima-clouddev-lab (positive control)", "exit": 0, "expected": "allowed", "result": "PASS"},
+    {"test": "git ls-remote https://github.com/octocat/Hello-World (supplementary)", "exit": 0, "expected": "n/a", "result": "OBSERVED_PUBLIC_READ_ALLOWED"}
+  ],
+  "artifact": {
+    "name": "opa_linux_amd64",
+    "version": "v1.21.4",
+    "url": "https://github.com/open-policy-agent/opa/releases/download/v1.21.4/opa_linux_amd64",
+    "size_bytes": 64185386,
+    "sha256_expected": "5ae411b3ae2cb093ac1f70cc20df4b372eead7be61f7de989b33a3dbd6cbe09b",
+    "sha256_actual": "5ae411b3ae2cb093ac1f70cc20df4b372eead7be61f7de989b33a3dbd6cbe09b",
+    "sha256_official_sidecar": "5ae411b3ae2cb093ac1f70cc20df4b372eead7be61f7de989b33a3dbd6cbe09b",
+    "verified_before_chmod": true,
+    "opa_version_output": {"version": "1.21.4", "build_commit": "05c845177c80747a2aabb607f9318f981993cc76-dirty", "go": "go1.27.3", "platform": "linux/amd64", "rego_version": "v1"},
+    "executed_as_uid": 65534
+  },
+  "check": {"command": "opa check --strict fixtures/opa/policy.rego", "exit": 0, "output": ""},
+  "cases": [
+    {"input": "allow.json", "expected": true, "actual": true, "exit": 0, "ms": 14, "match": true},
+    {"input": "deny-external.json", "expected": false, "actual": false, "exit": 0, "ms": 13, "match": true},
+    {"input": "deny-incomplete.json", "expected": false, "actual": false, "exit": 0, "ms": 15, "match": true}
+  ],
+  "fixture_sha256": {
+    "fixtures/opa/allow.json": "6e5f35e469da719de1693284ddd3c48f75cd7b8019b24dcdc7467e1487bd0f46",
+    "fixtures/opa/deny-external.json": "771da558913af625e0760c642eb9272bb99d6b3d636a5af8a56d85682e902582",
+    "fixtures/opa/deny-incomplete.json": "f62ad346122ded4cba7a6ff49680ed2a3b15eee957c8d92849e37dfb6751ec31",
+    "fixtures/opa/expected.json": "c270ff70c4d2323dfd47d1fe3fb95abec83659c718e1d104672a135e59a87b52",
+    "fixtures/opa/policy.rego": "d3478d53ff7bb105dc47748669782739dc64f07ebcbf77ac53ebb3cffee6b843"
+  },
+  "scratch_cleaned": true,
+  "gates": {
+    "CD01_cost": "NOT_VERIFIED",
+    "CD02_dispatch": "MANUAL_SESSION_NOT_NATIVE_TRIGGER",
+    "CD03_cloud_execution": "PASS",
+    "CD04_real_binary": "PASS",
+    "CD05_security": "PASS_WITH_LIMITATIONS",
+    "CD06_evidence": "PASS",
+    "CD07_review": "PENDING"
+  }
+}
